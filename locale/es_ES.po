@@ -1,0 +1,27 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,lines_tree:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "field:account.invoice.line,chapter_number:"
+msgid "Chapter Number"
+msgstr "Número capítulo"
+
+msgctxt "field:account.invoice.line,childs:"
+msgid "Childs"
+msgstr "Hijos"
+
+msgctxt "field:account.invoice.line,left:"
+msgid "Left"
+msgstr "Izquierda"
+
+msgctxt "field:account.invoice.line,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:account.invoice.line,right:"
+msgid "Right"
+msgstr "Derecha"

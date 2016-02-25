@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook/page[@id='invoice']/field[@name='lines']"
+            position="replace">
+        <!-- Required for party states -->
+        <field name="lines" invisible="1"/>
+        <field name="lines_tree" colspan="6"
+            view_ids="account_invoice.invoice_line_view_tree_sequence"/>
+    </xpath>
+</data>
