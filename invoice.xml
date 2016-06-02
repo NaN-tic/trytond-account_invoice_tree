@@ -14,7 +14,7 @@
                 id="account_invoice.invoice_line_view_tree_sequence">
             <field name="field_childs">childs</field>
         </record>
-        <record model="ir.ui.view" id="account_invoice_line_view_tree_sequence">
+        <record model="ir.ui.view" id="invoice_line_view_tree_sequence">
             <field name="model">account.invoice.line</field>
             <field name="inherit"
                 ref="account_invoice.invoice_line_view_tree_sequence"/>
