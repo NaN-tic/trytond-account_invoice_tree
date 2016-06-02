@@ -71,12 +71,13 @@ class Invoice:
                 'lines': value,
                 })
 
-    @fields.depends('lines_tree', methods=['lines'])
+    @fields.depends('lines', 'lines_tree', methods=['lines'])
     def on_change_lines_tree(self, name=None):
+        lines = self.lines
         self.lines = self.lines_tree
         self.on_change_lines()
         self.lines_tree = self.lines
-        self.lines = None
+        self.lines = lines
 
     @classmethod
     def copy(cls, invoices, default=None):
