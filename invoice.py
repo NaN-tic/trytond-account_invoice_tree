@@ -75,6 +75,8 @@ class Invoice:
     def on_change_lines_tree(self, name=None):
         self.lines = self.lines_tree
         self.on_change_lines()
+        self.lines_tree = self.lines
+        self.lines = None
 
     @classmethod
     def copy(cls, invoices, default=None):
