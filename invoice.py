@@ -7,10 +7,9 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
 __all__ = ['Invoice', 'InvoiceLine']
-__metaclass__ = PoolMeta
 
 
-class ChapterMixin:
+class ChapterMixin(object):
     chapter_number = fields.Function(fields.Char('Chapter Number'),
         'get_chapter_number')
 
@@ -45,6 +44,7 @@ class ChapterMixin:
 
 
 class Invoice:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice'
     lines_tree = fields.Function(fields.One2Many('account.invoice.line',
             'invoice', 'Lines',
@@ -92,6 +92,7 @@ class Invoice:
 
 
 class InvoiceLine(ChapterMixin):
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
 
     parent = fields.Many2One('account.invoice.line', 'Parent', select=True,
