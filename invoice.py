@@ -47,7 +47,7 @@ class Invoice:
     __metaclass__ = PoolMeta
     __name__ = 'account.invoice'
     lines_tree = fields.Function(fields.One2Many('account.invoice.line',
-            'invoice', 'Lines',
+            None, 'Lines',
             domain=[
                 ('parent', '=', None),
                 ]),
