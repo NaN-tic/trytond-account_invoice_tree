@@ -141,7 +141,6 @@ class InvoiceLine(ChapterMixin):
     def copy(cls, lines, default=None):
         if default is None:
             default = {}
-        default['wbs'] = None
         default['childs'] = []
         new_lines = []
         for line in lines:
