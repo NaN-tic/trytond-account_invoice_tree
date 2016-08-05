@@ -99,27 +99,17 @@ class InvoiceLine(ChapterMixin):
     __name__ = 'account.invoice.line'
 
     parent = fields.Many2One('account.invoice.line', 'Parent', select=True,
-        left='left', right='right', ondelete='CASCADE',
+        ondelete='CASCADE',
         domain=[
             ('invoice', '=', Eval('invoice')),
             ('type', '=', 'title'),
             ],
         depends=['invoice'])
-    left = fields.Integer('Left', required=True, select=True)
-    right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many('account.invoice.line', 'parent', 'Childs',
         domain=[
             ('invoice', '=', Eval('invoice')),
             ],
         depends=['invoice'])
-
-    @staticmethod
-    def default_left():
-        return 0
-
-    @staticmethod
-    def default_right():
-        return 0
 
     def get_amount(self, name):
         if self.parent and (self.type == 'subtotal'
