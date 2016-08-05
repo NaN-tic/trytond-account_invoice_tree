@@ -111,7 +111,6 @@ class InvoiceLine(ChapterMixin):
             ],
         depends=['invoice'])
 
-
     def get_amount(self, name):
         if self.parent and (self.type == 'subtotal'
                 and self.parent.type == 'title'):
