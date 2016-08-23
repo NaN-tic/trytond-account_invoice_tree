@@ -58,6 +58,8 @@ class Invoice:
         super(Invoice, cls).__setup__()
         if cls.lines.domain:
             cls.lines_tree._field.domain.extend(cls.lines.domain)
+        if cls.lines.add_remove:
+            cls.lines_tree._field.add_remove = cls.lines.add_remove[:]
         cls.lines_tree._field.states = cls.lines.states
         cls.lines_tree._field.context = cls.lines.context
         cls.lines_tree._field.depends = cls.lines.depends
