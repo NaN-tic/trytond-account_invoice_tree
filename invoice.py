@@ -5,6 +5,7 @@ from decimal import Decimal
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 __all__ = ['Invoice', 'InvoiceLine']
 
@@ -69,9 +70,10 @@ class Invoice:
 
     @classmethod
     def set_lines_tree(cls, lines, name, value):
-        cls.write(lines, {
-                'lines': value,
-                })
+        with Transaction().set_context(skip_update_taxes=True):
+            cls.write(lines, {
+                    'lines': value,
+                    })
 
     @fields.depends('lines', 'lines_tree', methods=['lines'])
     def on_change_lines_tree(self, name=None):
@@ -136,7 +138,8 @@ class InvoiceLine(ChapterMixin):
     @classmethod
     def get_1st_level_chapters(cls, records):
         for invoice in {l.invoice for l in records}:
-            yield invoice.lines_tree
+            if invoice:  # compatibility with account_invoice_line_standalone
+                yield invoice.lines_tree
 
     @classmethod
     def copy(cls, lines, default=None):
